@@ -1,0 +1,115 @@
+import 'package:flutter/material.dart';
+
+
+//Stateless -> Widgets que não podem ser alterados
+//Statefull -> Widgets que podem ser alterados
+
+void main(){
+
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,//mostra barra de DEBUG
+      home: HomeStateful(),
+//    home: Container(
+//      //color: Colors.white,
+//      padding: EdgeInsets.fromLTRB(0,50,0,0),//espacamento para Left, Top, Right, Botton
+//      margin: EdgeInsets.all(0),
+//      decoration: BoxDecoration(
+//        border: Border.all(width: 3, color: Colors.blue)
+//      ),
+//        child: Image.asset(
+//            "images/consoles.jpg",
+//            fit: BoxFit.cover,
+//        ),
+////      child: Column(
+////        children: <Widget>[
+////          Text(
+////            "Usuário:",
+////            style: TextStyle(
+////              fontSize: 40,
+////              fontStyle: FontStyle.normal,
+////              fontWeight: FontWeight.normal,
+////              letterSpacing: 0,
+////              wordSpacing: 0,
+////              decoration: TextDecoration.none,
+////              color: Colors.white
+////            ),
+////          ),
+////          FlatButton(onPressed: (){
+////            print("Botão pressionado");
+////          },
+////              child: Text(
+////                "Botão",
+////                style: TextStyle(
+////                fontSize: 20,
+////                color: Colors.black,
+////                decoration: TextDecoration.none
+////            ),
+////          ))
+////      ],),
+//    ),
+  ));
+
+}
+
+class HomeStateful extends StatefulWidget {
+  @override
+  _HomeStatefulState createState() => _HomeStatefulState();
+}
+
+class _HomeStatefulState extends State<HomeStateful> {
+  @override
+  var _texto = "Teste";
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("My Games"),
+        backgroundColor: Colors.blue,
+      ),
+        body: Container(
+          child: Column(
+            children: <Widget>[
+              RaisedButton(
+                onPressed: (){
+
+                  setState(() {
+                    _texto = "Teste click";
+                  });
+                },
+                color: Colors.cyan,
+                child: Text("Clique Aqui"),
+              ),
+              Text("Nome: $_texto")
+            ],
+          ),
+        ),
+    );
+  }
+}
+
+
+class Home extends StatelessWidget {
+  @override
+  var _titulo = "My Games";
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_titulo),
+        backgroundColor: Colors.blue,
+      ),
+      body: Text("Conteudo"),
+        bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
+        child: Padding(
+          padding: EdgeInsets.all(16),
+            child: Row(
+            children: <Widget>[
+            Text("Texto")
+            ],
+          ),
+        ),
+        ),
+      );
+  }
+}
